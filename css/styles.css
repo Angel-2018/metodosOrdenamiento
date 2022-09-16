@@ -1,0 +1,50 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  scroll-snap-type: y mandatory;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  font-size: 16px; /* 1rem = 10px */
+  font-family: 'Roboto Flex', sans-serif;
+  background-color: #1E1E1E;
+}
+
+.container {
+  background-color: #F96900;
+  width: 40%;
+  padding: 20px;
+  margin: 10% auto;
+  border-radius: 15px;
+}
+
+.title {
+  text-align: center;
+}
+
+.botones {
+  display: grid;
+}
+
+.botones .boton {
+  margin: 15px auto;
+  width: 70%;
+  padding: 15px;
+  background-color: #F7F9F9;
+  border-radius: 15px;
+  border: none;
+  font-size: 24px;
+  font-weight: 400;
+  transition: all 300ms;
+  position: relative;
+}
+
+.botones .boton:hover {
+  transform: scale(1.05);
+}

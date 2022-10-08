@@ -113,6 +113,32 @@ h2 {
   border-radius: 5px;
 }
 
+.seccion-botones {
+  display: flex;
+  justify-content: space-around;
+}
+
+.seccion-botones .btn {
+  width: 40%;
+  font-size: 15px;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 0.5px solid #eee;
+}
+
+thead, td {
+  color: white;
+  text-align: center;
+}
+
+.grafica {
+  width: 90%;
+}
+
 @media (min-width: 1500px) {
     .container {
       width: 40%;

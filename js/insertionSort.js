@@ -3,8 +3,8 @@ const btn = document.querySelector('#btn');
 const tablaValores = document.querySelector('#tablaValores');
 const contenedorTabla = document.querySelector('#contenedorTabla');
 const $grafica = document.querySelector('#grafica');
-let min = 1000000;
-let max = 10000000;
+let min = 10;
+let max = 100;
 
 btn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -25,7 +25,7 @@ btn.addEventListener('click', (e) => {
         .map(() => Math.floor(Math.random() * (max - min) + min));
 
       let start = performance.now();
-      bubbleSort(array);
+      insertionSort(array);
       let end = performance.now();
 
       let tiempo = end / 1000 - start / 1000;
@@ -41,15 +41,16 @@ btn.addEventListener('click', (e) => {
   }
 });
 
-function bubbleSort(array) {
-  for (let i = 0; i < array.length - 1; i++) {
-    for (let j = 0; j < array.length - 1 - i; j++) {
-      if (array[j] > array[j + 1]) {
-        aux = array[j];
-        array[j] = array[j + 1];
-        array[j + 1] = aux;
-      }
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let currentValue = arr[i];
+    let j;
+
+    for (j = i - 1; j >= 0 && arr[j] > currentValue; j--) {
+      arr[j + 1] = arr[j];
     }
+
+    arr[j + 1] = currentValue;
   }
 }
 

@@ -25,7 +25,7 @@ btn.addEventListener('click', (e) => {
         .map(() => Math.floor(Math.random() * (max - min) + min));
 
       let start = performance.now();
-      insertionSort(array);
+      selectionSort(array);
       let end = performance.now();
 
       let tiempo = end / 1000 - start / 1000;
@@ -41,16 +41,23 @@ btn.addEventListener('click', (e) => {
   }
 });
 
-function insertionSort(arr) {
-  for (let i = 1; i < arr.length; i++) {
-    let currentValue = arr[i];
-    let j;
+function selectionSort(arr) {
+  let menor;
 
-    for (j = i - 1; j >= 0 && arr[j] > currentValue; j--) {
-      arr[j + 1] = arr[j];
+  for (let i = 0; i < arr.length; i++) {
+    menor = i;
+
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[menor]) {
+        menor = j;
+      }
     }
 
-    arr[j + 1] = currentValue;
+    if (menor != i) {
+      let temp = arr[i];
+      arr[i] = arr[menor];
+      arr[menor] = temp;
+    }
   }
 }
 

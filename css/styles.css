@@ -51,6 +51,10 @@ body {
   width: 50%;
 }
 
+.contenedorGraficas {
+  width: 100%;
+}
+
 .title {
   color: #eee;
   text-align: center;
@@ -145,6 +149,11 @@ h2 {
 
 .botones .btn-verde {
   background-color: #104547;
+  color: #F7F9F9;
+}
+
+.botones .btn-negro {
+  background-color: #000;
   color: #F7F9F9;
 }
 

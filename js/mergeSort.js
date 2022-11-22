@@ -25,7 +25,7 @@ btn.addEventListener('click', (e) => {
         .map(() => Math.floor(Math.random() * (max - min) + min));
 
       let start = performance.now();
-      selectionSort(array);
+      array = mergeSort(array);
       let end = performance.now();
 
       let tiempo = end / 1000 - start / 1000;
@@ -41,24 +41,33 @@ btn.addEventListener('click', (e) => {
   }
 });
 
-function selectionSort(arr) {
-  let menor;
+function merge(left, right) {
+  let sortedArr = []; // the sorted elements will go here
 
-  for (let i = 0; i < arr.length; i++) {
-    menor = i;
-
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[menor]) {
-        menor = j;
-      }
-    }
-
-    if (menor != i) {
-      let temp = arr[i];
-      arr[i] = arr[menor];
-      arr[menor] = temp;
+  while (left.length && right.length) {
+    // insert the smallest element to the sortedArr
+    if (left[0] < right[0]) {
+      sortedArr.push(left.shift());
+    } else {
+      sortedArr.push(right.shift());
     }
   }
+
+  // use spread operator and create a new array, combining the three arrays
+  return [...sortedArr, ...left, ...right];
+}
+
+function mergeSort(arr) {
+  const half = arr.length / 2;
+
+  // the base case is array length <=1
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  const left = arr.splice(0, half); // the first half of the array
+  const right = arr;
+  return merge(mergeSort(left), mergeSort(right));
 }
 
 function llenarTabla(valores, tiemposEjecucion) {
@@ -96,7 +105,7 @@ function graficar(valores, tiemposEjecucion) {
   const etiquetas = valores;
 
   const datosTiempo = {
-    label: 'Tiempo de ejecución - Algoritmo de complejidad O(n²)',
+    label: 'Tiempo de ejecución - Algoritmo de complejidad O(n log n)',
     data: tiemposEjecucion, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
     // backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
     borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
@@ -127,6 +136,4 @@ function graficar(valores, tiemposEjecucion) {
       },
     },
   });
-
-  console.log($grafica);
 }

@@ -25,7 +25,7 @@ btn.addEventListener('click', (e) => {
         .map(() => Math.floor(Math.random() * (max - min) + min));
 
       let start = performance.now();
-      selectionSort(array);
+      quickSort(array, 0, array.length - 1);
       let end = performance.now();
 
       let tiempo = end / 1000 - start / 1000;
@@ -41,24 +41,36 @@ btn.addEventListener('click', (e) => {
   }
 });
 
-function selectionSort(arr) {
-  let menor;
-
-  for (let i = 0; i < arr.length; i++) {
-    menor = i;
-
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[menor]) {
-        menor = j;
-      }
-    }
-
-    if (menor != i) {
-      let temp = arr[i];
-      arr[i] = arr[menor];
-      arr[menor] = temp;
+function partition(arr, start, end) {
+  // Taking the last element as the pivot
+  const pivotValue = arr[end];
+  let pivotIndex = start;
+  for (let i = start; i < end; i++) {
+    if (arr[i] < pivotValue) {
+      // Swapping elements
+      [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+      // Moving to next element
+      pivotIndex++;
     }
   }
+
+  // Putting the pivot value in the middle
+  [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]];
+  return pivotIndex;
+}
+
+function quickSort(arr, start, end) {
+  // Base case or terminating case
+  if (start >= end) {
+    return;
+  }
+
+  // Returns pivotIndex
+  let index = partition(arr, start, end);
+
+  // Recursively apply the same logic to the left and right subarrays
+  quickSort(arr, start, index - 1);
+  quickSort(arr, index + 1, end);
 }
 
 function llenarTabla(valores, tiemposEjecucion) {
@@ -96,7 +108,7 @@ function graficar(valores, tiemposEjecucion) {
   const etiquetas = valores;
 
   const datosTiempo = {
-    label: 'Tiempo de ejecución - Algoritmo de complejidad O(n²)',
+    label: 'Tiempo de ejecución - Algoritmo de complejidad O(n log n)',
     data: tiemposEjecucion, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
     // backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
     borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
@@ -127,6 +139,4 @@ function graficar(valores, tiemposEjecucion) {
       },
     },
   });
-
-  console.log($grafica);
 }

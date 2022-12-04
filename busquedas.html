@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>busquedas</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="contenedor-imagen">
+      <img class="img" src="img/pngwing.com.png" alt="">
+    </div>
+    <h1 class="title">Búsquedas</h1>
+    <div class="contenedorTablaGrafica">
+        <div class="contenedorFormTablaComparativa">
+            <form>
+                <h2>Ingresa el tamaño del arreglo a ordenar</h2>
+          
+                <div class="campos">
+                  <div class="campo">
+                    <label>Numero a buscar:</label>
+                    <input id="number" type="number">
+                  </div>
+          
+                  <input id="btn" type="submit" value="Buscar" class="btnArreglo">
+                </div>
+              </form>
+        </div>        
+    </div>
+    <div id="contenedorTablas" class="contenedorTablas">
+        <div id = "contenedorTablaLineal" class="tablaBusqueda"></div>
+        <div id = "contenedorTablaIterativa" class="tablaBusqueda"></div>
+        <div id = "contenedorTablaRecursiva" class="tablaBusqueda"></div>
+    </div>
+    <div class="seccion-botones">
+      <a href="index.html" class="btnRegresar">Regresar al menú principal</a>
+    </div>
+  </div>
+
+  <script src="js/busquedas.js"></script>
+</body>
+</html>

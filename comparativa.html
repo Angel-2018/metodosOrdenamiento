@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiempos De Ejecución</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="contenedor-imagen">
+      <img class="img" src="img/pngwing.com.png" alt="">
+    </div>
+    <h1 class="title">Comparación Entre Algoritmos</h1>   
+    <div class="contenedorTablaGrafica">
+        <div class="contenedorFormTablaComparativa">
+            <form>
+                <h2>Ingresa el tamaño del arreglo a ordenar</h2>
+          
+                <div class="campos">
+                  <div class="campo">
+                    <label>Tamaño del arreglo:</label>
+                    <input id="size" type="number">
+                  </div>
+          
+                  <input id="btn" type="submit" value="Generar arreglo" class="btnArreglo">
+                </div>
+              </form>
+        </div>        
+      </div> 
+      <div class="contenedorGraficaComparativa">
+          <canvas id="grafica" class="grafica"></canvas>
+      </div>
+
+    <div id="contenedorTablaBubble" class="titulo-metodo"></div>
+    <div id="contenedorTablaInsertion" class="titulo-metodo"></div>
+    <div id="contenedorTablaSelection" class="titulo-metodo"></div>
+    <div id="contenedorTablaMerge" class="titulo-metodo"></div>
+    <div id="contenedorTablaQuick" class="titulo-metodo"></div>
+    
+    <div class="seccion-botones">
+      <a href="index.html" class="btnRegresar">Regresar al menú principal</a>
+    </div>
+  </div>
+
+  <script src="js/comparativa.js"></script>
+</body>
+</html>

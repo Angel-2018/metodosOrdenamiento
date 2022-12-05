@@ -9,9 +9,6 @@ const contenedorTablaRecursiva = document.querySelector(
 );
 let min = 0;
 let max = 10000000;
-let array = Array(10000000)
-  .fill()
-  .map(() => Math.floor(Math.random() * (max - min) + min));
 
 btn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -19,6 +16,9 @@ btn.addEventListener('click', (e) => {
   if (number.value === '') {
     alert('Debes introducir un numero');
   } else {
+    let array = Array(10000000)
+      .fill()
+      .map(() => Math.floor(Math.random() * (max - min) + min));
     let item = parseInt(number.value);
     let start;
     let position;
